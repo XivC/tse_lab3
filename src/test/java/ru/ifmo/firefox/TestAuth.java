@@ -18,6 +18,9 @@ public class TestAuth {
   @FindBy(xpath = "/html/body/div[2]/div[1]/div[2]/main/div/div/main/div[1]/div/div[1]/button")
   WebElement manButton;
 
+  @FindBy(xpath = "/html/body/div[2]/div[1]/div[2]/main/div/div/main/div[1]/div/div[2]/button")
+  WebElement womanButton;
+
   @BeforeEach
   public void setUp() {
     driver = Runner.forChrome();
@@ -31,11 +34,22 @@ public class TestAuth {
   }
 
   @Test
-  public void testButtonsText() {
+  public void testManButtonText() {
+
     driver.get("https://mamba.ru/");
     PageFactory.initElements(driver, this);
     String text = manButton.getText();
     assert Objects.equals(text, "Мужчина");
   }
+
+  @Test
+  public void testWomanButtonText() {
+    driver.get("https://mamba.ru/");
+    PageFactory.initElements(driver, this);
+    String text = womanButton.getText();
+    assert Objects.equals(text, "Женщина");
+  }
+
+
 
 }
